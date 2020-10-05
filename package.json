@@ -1,0 +1,19 @@
+{
+    "name": "builderes",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+        "start": "electron ."
+    },
+    "keywords": [],
+    "author": {
+        "email": "bbogdanov_bog908@mail.ru",
+        "name": "Bogdanoff (Bogdan Bogdanov)"
+    },
+    "license": "ISC",
+    "dependencies": {
+        "electron": "^10.1.3",
+        "electron-packager": "^15.1.0"
+    }
+}

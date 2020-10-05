@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <style>
+        * {
+            box-sizing: border-box;
+            position: relative;
+            outline: none;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 16px;
+        }
+        body {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            background: #fff;
+        }
+        .container {
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+        }
+        .container * {
+            margin: 5px 0;
+        }
+        .container span {
+            text-align: center;
+        }
+        .error {
+            color: #f55;
+            display: none;
+        }
+    </style>
+    <title>Builderes</title>
+</head>
+<body>
+    <div class="container">
+        <span class="error">Please enter host name or choose file</span>
+        <input type="text" placeholder="Enter host name">
+        <span style="color: #aaa;">or</span>
+        <input type="file">
+        <button>Start!</button>
+    </div>
+
+    <script>
+        const electron = require("electron");
+        const 
+            button = document.querySelector("button"),
+            host_input = document.querySelector("input[type=text]"),
+            file_input = document.querySelector("input[type=file]");
+
+        button.onclick = ()=> {
+
+            if (host_input.value || file_input.files[0]) {
+
+                if (host_input.value)
+                    electron.ipcRenderer.send("current", host_input.value);
+                else if (file_input)
+                    electron.ipcRenderer.send("current", file_input.files[0].path);
+
+            } else
+                document.querySelector(".error").style.display = "initial";
+
+        };
+        
+    </script>
+
+</body>
+</html>
